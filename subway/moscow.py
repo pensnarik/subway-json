@@ -4,12 +4,6 @@ from subway.subway_parser import SubwayParser
 
 class MoscowSubway(SubwayParser):
 
-    def russian_date_to_date(self, d):
-        months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля',
-                  'августа', 'сентября', 'октября', 'ноября', 'декабря']
-        parts = d.split(' ')
-        return '%s-%.2d-%.2d' % (parts[2], months.index(parts[1]) + 1, int(parts[0]))
-
     def get_coords(self, td):
         a = td.xpath('.//a[contains(@class, "mw-kartographer-maplink")]')
         if len(a) > 0:
