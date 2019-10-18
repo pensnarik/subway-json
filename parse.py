@@ -10,8 +10,9 @@ import json
 
 from parselab.cache import FileCache
 from subway.moscow import MoscowSubway
+from subway.spb import SpbSubway
 
-cities = {'Moscow': MoscowSubway}
+cities = {'Moscow': MoscowSubway, 'Spb': SpbSubway}
 
 class App():
 
