@@ -1,3 +1,5 @@
+import re
+
 from lxml.html import fromstring
 
 from subway.subway_parser import SubwayParser
@@ -24,6 +26,9 @@ class MoscowSubway(SubwayParser):
             name = columns[1].xpath('.//a')[0].text_content().strip()
             open_date = self.russian_date_to_date(columns[2].text_content().strip())
             depth = columns[4].text_content().strip()
+
+            depth = re.sub(r'[\s\[\.].*', '', depth)
+
             coords = self.get_coords(columns[6])
 
             yield({'name': name, 'line': line, 'open_date': open_date, 'depth': depth, 'coords': coords})
